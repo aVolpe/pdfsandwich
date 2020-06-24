@@ -9,6 +9,9 @@ RUN cd /tmp && \
     dpkg -i pdfsandwich.deb && \
     apt-get -fy install
 
+# https://stackoverflow.com/questions/42928765/convertnot-authorized-aaaa-error-constitute-c-readimage-453
+COPY ./im_policy.xml /etc/ImageMagick-6/policy.xml
+
 WORKDIR /root
 
 CMD ['/usr/bin/pdfsandwich', '-nthreads', '1']
